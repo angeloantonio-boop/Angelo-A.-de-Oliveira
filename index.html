@@ -3,192 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGRINHO 2026 | Future Vision</title>
+    <title>Agrinho 2026 | Inovação Sustentável</title>
     <style>
         :root {
-            --neon-green: #39ff14;
-            --dark-bg: #0a0f0a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --text-gray: #b0b0b0;
+            --primary-green: #2d6a4f; /* Verde esmeralda sóbrio */
+            --accent-green: #52b788;
+            --bg-light: #1a1d1a; /* Fundo grafite levemente mais claro */
+            --glass-card: rgba(255, 255, 255, 0.08);
+            --text-main: #e0e0e0;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: #ffffff;
-            font-family: 'Orbitron', sans-serif; /* Fonte futurista */
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fonte padrão limpa */
             margin: 0;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Efeito de Scanline na tela */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 9999;
-            pointer-events: none;
-            background-size: 100% 2px, 3px 100%;
-        }
-
+        /* Header Reduzido */
         header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 60px 20px;
             text-align: center;
-            background: radial-gradient(circle, rgba(46,125,50,0.2) 0%, rgba(10,15,10,1) 80%);
-            border-bottom: 2px solid var(--neon-green);
+            background: linear-gradient(180deg, #132a13 0%, var(--bg-light) 100%);
+            border-bottom: 1px solid rgba(82, 183, 136, 0.3);
         }
 
         h1 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 10px;
+            font-size: 2.5rem;
             margin: 0;
-            color: var(--neon-green);
-            text-shadow: 0 0 20px var(--neon-green);
+            color: var(--accent-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .tagline {
-            font-size: 1.2rem;
-            color: var(--text-gray);
+            font-size: 1rem;
+            opacity: 0.8;
             margin-top: 10px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 900px;
             margin: auto;
-            padding: 80px 20px;
+            padding: 40px 20px;
         }
 
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(57, 255, 20, 0.2);
+        /* Seção de Texto Principal */
+        .content-box {
+            background: var(--glass-card);
+            border-radius: 15px;
             padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h2 {
-            color: var(--neon-green);
-            border-left: 4px solid var(--neon-green);
-            padding-left: 15px;
-            text-transform: uppercase;
+            color: var(--accent-green);
+            font-weight: 400;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
 
         p {
-            line-height: 1.8;
-            color: var(--text-gray);
-            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
         }
 
+        /* Grid de Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-top: 40px;
         }
 
-        .feature-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--neon-green);
+        .card {
+            background: rgba(0, 0, 0, 0.2);
             padding: 25px;
-            border-radius: 10px;
-            transition: 0.4s;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary-green);
+            transition: transform 0.3s ease;
         }
 
-        .feature-card:hover {
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
-            transform: scale(1.02);
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .feature-card h3 {
-            color: #fff;
+        .card h3 {
             margin-top: 0;
-        }
-
-        .highlight {
-            color: var(--neon-green);
-            font-weight: bold;
+            color: #fff;
+            font-size: 1.2rem;
         }
 
         footer {
             text-align: center;
             padding: 40px;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Animação simples */
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-        .status-dot {
-            height: 10px; width: 10px;
-            background-color: var(--neon-green);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
-            animation: pulse 2s infinite;
+        b {
+            color: var(--accent-green);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <div class="status-box">
-        <span class="status-dot"></span> SISTEMA AGRINHO 2026 ONLINE
-    </div>
-    <h1>AGRINHO 2.0.2.6</h1>
-    <p class="tagline">CONECTANDO RAÍZES AO CIBERESPAÇO</p>
+    <h1>Agrinho 2026</h1>
+    <div class="tagline">Inovação, Tecnologia e a Força do Campo</div>
 </header>
 
 <div class="container">
     
-    <section class="glass-panel">
-        <h2>A Importância da Agricultura no Século XXI</h2>
+    <section class="content-box">
+        <h2>A Importância Vital da Agricultura</h2>
         <p>
-            A agricultura não é apenas o cultivo da terra; é o sistema operacional da humanidade. Em 2026, entendemos que o <span class="highlight">Agro Forte</span> é o que garante a segurança alimentar de bilhões de pessoas enquanto preserva os biomas brasileiros. 
+            A agricultura é o alicerce da civilização moderna. Muito além de produzir alimentos, ela movimenta a economia, gera empregos e impulsiona o desenvolvimento tecnológico. Em 2026, o cenário global exige que sejamos mais eficientes do que nunca: precisamos produzir mais fibras, energia e alimentos, utilizando <b>menos recursos naturais</b>.
         </p>
         <p>
-            Sem o campo, as cidades param. A agricultura moderna integra sensores IoT (Internet das Coisas), drones de monitoramento e biotecnologia para produzir mais em menos espaço, reduzindo drasticamente o desperdício de água e o uso de insumos químicos. O equilíbrio entre **produção e preservação** é o código fundamental para a sobrevivência das próximas gerações.
+            O Paraná é protagonista nessa jornada. Através da <b>Agricultura 4.0</b>, o uso de dados e o manejo inteligente do solo garantem que o estado continue sendo um exemplo de produtividade. O programa Agrinho entra nesta engrenagem para educar as novas gerações sobre como o equilíbrio ambiental e a tecnologia caminham juntos para um futuro próspero.
         </p>
     </section>
 
     <div class="grid">
-        <div class="feature-card">
-            <h3>🌱 Sustentabilidade Real</h3>
-            <p>O Agrinho 2026 desafia alunos a pensarem em ciclos fechados: onde o resíduo de um processo vira energia ou nutriente para outro. A economia circular no campo é a nossa maior tecnologia.</p>
+        <div class="card">
+            <h3>Segurança Alimentar</h3>
+            <p>Garantir que comida de qualidade chegue à mesa de todos através de processos logísticos e produtivos otimizados.</p>
         </div>
-        <div class="feature-card">
-            <h3>🛰️ Agro-Inteligência</h3>
-            <p>Através da robótica e programação, estamos formando "nativos digitais do campo". Jovens que utilizam dados de satélite para entender o solo e IA para prever colheitas saudáveis.</p>
+        <div class="card">
+            <h3>Preservação Ativa</h3>
+            <p>O uso de técnicas como o plantio direto e a rotação de culturas para manter a saúde do solo e das águas.</p>
         </div>
-        <div class="feature-card">
-            <h3>🌍 Ecossistema Social</h3>
-            <p>A agricultura sustenta a economia do Paraná. Valorizar o produtor rural é fortalecer a base da nossa sociedade, garantindo que o futuro seja verde e tecnologicamente humano.</p>
+        <div class="card">
+            <h3>Educação Digital</h3>
+            <p>Levar o pensamento computacional e a robótica para resolver desafios reais vividos pelo produtor rural.</p>
         </div>
     </div>
 
-    <section class="glass-panel" style="margin-top: 60px; text-align: center;">
-        <h2>Missão: Equilíbrio Ambiental</h2>
+    <section class="content-box" style="margin-top: 40px;">
+        <h2>Tecnologia a Serviço da Vida</h2>
         <p>
-            O grande desafio do nosso tempo é a descarbonização. O projeto Agrinho incentiva práticas que sequestram carbono no solo, mantêm as nascentes protegidas e utilizam a energia solar como principal motor das fazendas do futuro.
+            Imagine um campo onde drones monitoram a saúde de cada planta e sistemas inteligentes de irrigação economizam milhões de litros de água. Isso já é realidade. O desafio do <b>Agrinho 2026</b> é conectar o estudante a esse universo, mostrando que a agricultura é um dos setores mais inovadores e promissores para as carreiras do futuro.
         </p>
-        <p class="highlight">O FUTURO É UMA SEMENTE QUE PLANTAMOS HOJE.</p>
     </section>
 
 </div>
 
 <footer>
-    <p>SISTEMA FAEP/SENAR-PR // PROTOCOLO EDUCACIONAL 2026 // ACESSO AUTORIZADO</p>
+    <p>Programa Agrinho 2026 | Sistema FAEP/SENAR-PR | Desenvolvimento Educacional</p>
 </footer>
 
 </body>
