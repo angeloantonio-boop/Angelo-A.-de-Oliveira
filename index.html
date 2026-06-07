@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 | Conexões que Transformam</title>
+    <style>
+        /* Variáveis de Cores Baseadas no Tema do Campo */
+        :root {
+            --primary-color: #2e7d32; /* Verde Agrinho */
+            --secondary-color: #f57c00; /* Laranja Terra */
+            --light-bg: #f4f6f4;
+            --dark-text: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho / Menu */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            max-width: 800px;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e65100;
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Sobre o Programa */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Categorias / Cards */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1e4622;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Simplificado para o exemplo */
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Agrinho 2026 🌱</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#contato">Contato/Inscrições</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Programa Agrinho 2026</h1>
+            <p>Tema do Ano: <strong>"Campo e Cidade: Conexões que transformam"</strong>. Levando a ética, sustentabilidade e inovação das salas de aula para o mundo real.</p>
+            <a href="#contato" class="btn">Participe Agora</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2 class="section-title">Sobre o Programa</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>O Programa Agrinho celebra décadas de forte atuação conjunta entre o Sistema FAEP/SENAR e as instituições de ensino, estimulando a criatividade e a pesquisa científica desde a infância.</p>
+                <br>
+                <p>Nesta edição de 2026, focamos na interdependência e no ecossistema que une a produção rural ao desenvolvimento tecnológico e sustentável das áreas urbanas, fomentando projetos transdisciplinares nas redes públicas e privadas.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600" alt="Crianças estudando e plantando">
+            </div>
+        </div>
+    </section>
+
+    <section id="categorias" style="background-color: #f9f9f9; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title">Categorias em Destaque</h2>
+            <div class="categories-grid">
+                <div class="card">
+                    <h3>🎨 Desenho</h3>
+                    <p>Focado na educação infantil e anos iniciais, estimulando a imaginação sobre a vida rural e urbana.</p>
+                </div>
+                <div class="card">
+                    <h3>✍️ Redação</h3>
+                    <p>Produções textuais críticas abordando a sustentabilidade, cidadania e a importância do agronegócio.</p>
+                </div>
+                <div class="card">
+                    <h3>🤖 Robótica e Programação</h3>
+                    <p>Desenvolvimento de soluções tecnológicas e automações voltadas aos desafios reais do campo moderno.</p>
+                </div>
+                <div class="card">
+                    <h3>👩‍🏫 Experiência Pedagógica</h3>
+                    <p>Espaço reservado para os professores compartilharem seus projetos práticos de alto impacto metodológico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2 class="section-title">Fale Conosco ou Faça Sua Inscrição</h2>
+        <div class="contact-form">
+            <form action="#" method="POST" onsubmit="alert('Obrigado pelo contato! Esta é uma demonstração de site para o Agrinho 2026.'); return false;">
+                <div class="form-group">
+                    <label for="name">Nome Completo:</label>
+                    <input type="text" id="name" required placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo ou Escolar:</label>
+                    <input type="email" id="email" required placeholder="seuemail@escola.com">
+                </div>
+                <div class="form-group">
+                    <label for="role">Sua Categoria:</label>
+                    <select id="role" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="aluno">Aluno</option>
+                        <option value="professor">Professor(a)</option>
+                        <option value="gestor">Gestor Escolar / Município</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Fale sobre o seu projeto:</label>
+                    <textarea id="message" rows="5" required placeholder="Resuma brevemente a ideia que você ou sua escola deseja inscrever..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Website de Prática - Programa Agrinho. Inspir
