@@ -3,217 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Importância da Agricultura e seus Impactos</title>
+    <title>IMPORTÂNCIA DA AGRICULTURA</title>
     <style>
         :root {
-            /* MODO ESCURO */
             --bg-body: #0f110f;
-            --bg-nav: #0f110f;
             --text-main: #e0e0e0;
             --accent-color: #52b788; 
             --card-bg: rgba(255, 255, 255, 0.03);
-            --sidebar-line: rgba(82, 183, 136, 0.4);
-            --conn-color: rgba(82, 183, 136, 0.15);
+            --sidebar-line: rgba(82, 183, 136, 0.2);
         }
 
         [data-theme="light"] {
-            /* MODO CLARO */
             --bg-body: #d1d5db; 
-            --bg-nav: #d1d5db;
             --text-main: #1f2937;
             --accent-color: #2563eb; 
             --card-bg: rgba(255, 255, 255, 0.4);
-            --sidebar-line: rgba(37, 99, 235, 0.4);
-            --conn-color: rgba(37, 99, 235, 0.15);
+            --sidebar-line: rgba(37, 99, 235, 0.2);
         }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            transition: background 0.5s, color 0.5s;
+            transition: all 0.5s;
             overflow-x: hidden;
+            min-height: 250vh; /* Altura aumentada */
         }
 
-        /* FUNDO ANIMADO (CONEXÕES TECNOLÓGICAS) */
+        /* FUNDO ANIMADO SUTIL */
         .tech-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background-image: 
-                radial-gradient(circle at 2px 2px, var(--accent-color) 1px, transparent 0);
-            background-size: 40px 40px;
-            animation: moveBg 20s linear infinite;
-            opacity: 0.3;
+            background-image: radial-gradient(var(--accent-color) 0.5px, transparent 0);
+            background-size: 60px 60px;
+            animation: moveBg 30s linear infinite;
+            opacity: 0.15; /* Mais sutil */
         }
 
         @keyframes moveBg {
             from { background-position: 0 0; }
-            to { background-position: 40px 40px; }
+            to { background-position: 60px 60px; }
         }
 
-        /* TRAÇOS E CONEXÕES */
-        .lines-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: 
-                linear-gradient(90deg, var(--conn-color) 1px, transparent 1px) 0 0 / 100px 100px,
-                linear-gradient(var(--conn-color) 1px, transparent 1px) 0 0 / 100px 100px;
-            mask-image: linear-gradient(to bottom, black, transparent);
-        }
-
-        /* LATERAIS COM DETALHES */
+        /* LATERAIS */
         .side-bar {
             position: fixed;
-            top: 0; width: 40px; height: 100%;
+            top: 0; width: 30px; height: 100%;
             border-left: 1px solid var(--sidebar-line);
             border-right: 1px solid var(--sidebar-line);
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 20px;
             align-items: center;
-            color: var(--sidebar-line);
-            font-size: 10px;
-            padding: 10px 0;
             z-index: 5;
+            opacity: 0.5;
         }
         .left { left: 10px; }
         .right { right: 10px; }
-        
-        .side-detail { width: 4px; height: 4px; background: var(--sidebar-line); border-radius: 50%; }
+        .dot { width: 3px; height: 3px; background: var(--accent-color); border-radius: 50%; }
 
-        /* NAVEGAÇÃO */
+        /* NAVEGAÇÃO CENTRALIZADA */
         nav {
-            background: var(--bg-nav);
-            padding: 15px 50px;
+            background: var(--bg-body);
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 15px;
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--sidebar-line);
         }
 
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 25px; }
         nav a {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
-        .theme-btn {
+        .controls { display: flex; gap: 15px; align-items: center; }
+
+        select, .theme-btn {
             background: transparent;
-            color: var(--accent-color);
+            color: var(--text-main);
             border: 1px solid var(--accent-color);
-            padding: 6px 15px;
-            border-radius: 2px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.7rem;
             cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: bold;
-            transition: 0.3s;
         }
-        .theme-btn:hover { background: var(--accent-color); color: white; }
 
-        /* CONTEÚDO */
-        header { padding: 60px 20px; text-align: center; }
-        h1 { font-size: 2.5rem; color: var(--accent-color); margin: 0; }
+        header { padding: 80px 20px; text-align: center; }
+        h1 { font-size: 2.2rem; color: var(--accent-color); margin: 0; letter-spacing: 5px; }
 
         .container { max-width: 800px; margin: auto; padding: 40px 60px; }
 
         .content-section {
             background: var(--card-bg);
-            backdrop-filter: blur(8px);
             padding: 40px;
-            border-radius: 4px;
-            margin-bottom: 30px;
+            border-radius: 2px;
+            margin-bottom: 60px;
             border: 1px solid var(--sidebar-line);
-            box-shadow: 10px 10px 0px var(--sidebar-line);
         }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border: 1px solid var(--sidebar-line);
-            transition: 0.4s;
-        }
-        .card:hover {
-            box-shadow: 0 0 20px var(--accent-color);
-            transform: scale(1.02);
-        }
+        h2 { color: var(--accent-color); text-transform: uppercase; font-size: 1.2rem; }
 
-        h2 { border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
-
-        footer { text-align: center; padding: 40px; font-size: 0.7rem; letter-spacing: 2px; }
+        footer { text-align: center; padding: 100px; opacity: 0.5; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
 <div class="tech-bg"></div>
-<div class="lines-overlay"></div>
 
-<div class="side-bar left">
-    <div class="side-detail"></div><div class="side-detail"></div>
-    <span>DATA_2026</span>
-    <div class="side-detail"></div><div class="side-detail"></div>
-    <span>AGRO_TECH</span>
-    <div class="side-detail"></div><div class="side-detail"></div>
-</div>
-
-<div class="side-bar right">
-    <div class="side-detail"></div><div class="side-detail"></div>
-    <span>SYS_ON</span>
-    <div class="side-detail"></div><div class="side-detail"></div>
-    <span>V_4.0</span>
-    <div class="side-detail"></div><div class="side-detail"></div>
-</div>
+<div class="side-bar left"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="side-bar right"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 
 <nav>
     <div class="nav-links">
-        <a href="#impactos">Impactos</a>
-        <a href="#tecnologia">Inovação</a>
+        <a href="#impactos" id="link-impactos">Impactos</a>
+        <a href="#tecnologia" id="link-tecnologia">Tecnologia</a>
+        <a href="#sustentabilidade" id="link-sustentabilidade">Sustentabilidade</a>
     </div>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">MODO CLARO</button>
+    <div class="controls">
+        <select onchange="changeLang(this.value)">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">MODO CLARO</button>
+    </div>
 </nav>
 
 <header>
-    <h1>Importância da Agricultura e seus Impactos</h1>
-    <p>O Equilíbrio entre a Produção e o Futuro Digital</p>
+    <h1 id="main-title">IMPORTÂNCIA DA AGRICULTURA E SEUS IMPACTOS</h1>
+    <p id="sub-title">O pilar da evolução humana e tecnológica</p>
 </header>
 
 <div class="container">
     <section id="impactos" class="content-section">
-        <h2>Impacto Socioeconômico</h2>
-        <p>A agricultura moderna é o alicerce que permite o crescimento das cidades. Em 2026, seu impacto vai além do prato: ela define a balança comercial e dita o ritmo da inovação em biotecnologia. Sem um campo forte, a tecnologia urbana perde seu propósito e sua fonte de energia.</p>
+        <h2 id="h2-1">Impacto Socioeconômico</h2>
+        <p id="p-1">A agricultura é a base de todas as civilizações. Em 2026, ela representa não apenas a produção de alimentos, mas uma complexa cadeia de valor que sustenta a economia global, gerando empregos e promovendo o desenvolvimento tecnológico no campo e na cidade.</p>
     </section>
 
-    <div class="grid" id="tecnologia">
-        <div class="card">
-            <h3>Conexão 5G Rural</h3>
-            <p>Monitoramento em tempo real que permite reduzir o uso de defensivos e otimizar a colheita.</p>
-        </div>
-        <div class="card">
-            <h3>Sustentabilidade Ativa</h3>
-            <p>Impacto direto na preservação de nascentes e na recuperação de solos degradados.</p>
-        </div>
-    </div>
+    <section id="tecnologia" class="content-section">
+        <h2 id="h2-2">Revolução Tecnológica</h2>
+        <p id="p-2">Com a chegada da Agricultura 4.0, drones e sensores de alta precisão permitem um monitoramento detalhado de cada hectare. Isso resulta em maior produtividade com menor uso de recursos, evidenciando o impacto positivo da tecnologia na segurança alimentar mundial.</p>
+    </section>
 
-    <section class="content-section" style="margin-top: 40px;">
-        <h2>Impacto Ambiental e Futuro</h2>
-        <p>O grande diferencial da agricultura atual é a capacidade de produzir preservando. O uso de drones e sensores de solo garante que os recursos naturais sejam utilizados com precisão cirúrgica, diminuindo a pegada de carbono e garantindo que o futuro seja, de fato, sustentável.</p>
+    <section id="sustentabilidade" class="content-section">
+        <h2 id="h2-3">Sustentabilidade e Meio Ambiente</h2>
+        <p id="p-3">O maior impacto da agricultura moderna é a sua capacidade de regeneração. Práticas como o plantio direto e a integração lavoura-pecuária-floresta são essenciais para combater as mudanças climáticas e preservar a biodiversidade para as gerações futuras.</p>
+    </section>
+
+    <section class="content-section">
+        <h2 id="h2-4">O Futuro das Próximas Gerações</h2>
+        <p id="p-4">Educar sobre o campo é garantir que o progresso não pare. A agricultura é o setor que conecta o conhecimento ancestral com as ferramentas digitais mais avançadas, criando um ciclo de prosperidade contínua e respeito à terra.</p>
     </section>
 </div>
 
 <footer>
-    <p>SISTEMA DE INFORMAÇÃO AGRÍCOLA // 2026</p>
+    <p>© 2026 - CIÊNCIA AGRÍCOLA // TODOS OS DIREITOS RESERVADOS</p>
 </footer>
 
 <script>
+    const texts = {
+        pt: {
+            title: "IMPORTÂNCIA DA AGRICULTURA E SEUS IMPACTOS",
+            subtitle: "O pilar da evolução humana e tecnológica",
+            h2_1: "Impacto Socioeconômico",
+            p1: "A agricultura é a base de todas as civilizações. Em 2026, ela representa não apenas a produção de alimentos, mas uma complexa cadeia de valor que sustenta a economia global...",
+            btnMode: "MODO CLARO"
+        },
+        en: {
+            title: "IMPORTANCE OF AGRICULTURE AND ITS IMPACTS",
+            subtitle: "The pillar of human and technological evolution",
+            h2_1: "Socioeconomic Impact",
+            p1: "Agriculture is the foundation of all civilizations. In 2026, it represents not just food production, but a complex value chain that sustains the global economy...",
+            btnMode: "LIGHT MODE"
+        },
+        es: {
+            title: "IMPORTANCIA DE LA AGRICULTURA Y SUS IMPACTOS",
+            subtitle: "El pilar de la evolución humana y tecnológica",
+            h2_1: "Impacto Socioeconómico",
+            p1: "La agricultura es la base de todas las civilizaciones. En 2026, representa no solo la producción de alimentos, sino una compleja cadena de valor que sustenta la economía global...",
+            btnMode: "MODO CLARO"
+        }
+    };
+
+    function changeLang(lang) {
+        document.getElementById('main-title').innerText = texts[lang].title;
+        document.getElementById('sub-title').innerText = texts[lang].subtitle;
+        document.getElementById('h2-1').innerText = texts[lang].h2_1;
+        document.getElementById('p-1').innerText = texts[lang].p1;
+        // Adicione os demais campos conforme necessário
+    }
+
     function toggleTheme() {
         const body = document.body;
         const btn = document.getElementById('themeBtn');
