@@ -6,220 +6,219 @@
     <title>Agrinho 2026 | Inovação Sustentável</title>
     <style>
         :root {
-            --primary-green: #2d6a4f;
-            --accent-green: #52b788;
-            --bg-light: #1a1d1a; 
-            --glass-card: rgba(255, 255, 255, 0.08);
+            /* Modo Escuro (Padrão) */
+            --bg-body: #1a1d1a;
+            --bg-header: linear-gradient(180deg, #132a13 0%, #1a1d1a 100%);
             --text-main: #e0e0e0;
-            --sidebar-color: rgba(82, 183, 136, 0.05);
+            --accent-green: #52b788;
+            --card-bg: rgba(0, 0, 0, 0.3);
+            --glass-card: rgba(255, 255, 255, 0.08);
+            --sidebar-op: 0.15;
+            --nav-bg: #2d6a4f;
+        }
+
+        [data-theme="light"] {
+            /* Modo Claro (Acinzentado/Azulado) */
+            --bg-body: #e9ecef;
+            --bg-header: linear-gradient(180deg, #d1d8e0 0%, #e9ecef 100%);
+            --text-main: #2f3542;
+            --accent-green: #0984e3; /* Azul vibrante no modo claro */
+            --card-bg: #ffffff;
+            --glass-card: rgba(0, 0, 0, 0.05);
+            --sidebar-op: 0.1;
+            --nav-bg: #4a69bd;
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--bg-body);
             color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 200vh; 
+            transition: all 0.4s ease;
+            position: relative;
         }
 
-        /* Elementos Decorativos Laterais */
-        body::before, body::after {
-            content: "";
+        /* Decorações Laterais Mais Visíveis */
+        .side-decoration {
             position: fixed;
             top: 0;
-            width: 50px;
+            width: 80px;
             height: 100%;
-            background-image: linear-gradient(var(--sidebar-color) 1px, transparent 1px),
-                              linear-gradient(90deg, var(--sidebar-color) 1px, transparent 1px);
+            pointer-events: none;
+            z-index: 10;
+            opacity: var(--sidebar-op);
+            background-image: radial-gradient(var(--accent-green) 1px, transparent 1px);
             background-size: 20px 20px;
-            z-index: -1;
+            border-left: 2px solid var(--accent-green);
+            border-right: 2px solid var(--accent-green);
         }
-        body::before { left: 0; border-right: 1px solid var(--sidebar-color); }
-        body::after { right: 0; border-left: 1px solid var(--sidebar-color); }
+        .left-side { left: 20px; }
+        .right-side { right: 20px; }
 
-        header {
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, #132a13 0%, var(--bg-light) 100%);
-            border-bottom: 1px solid rgba(82, 183, 136, 0.2);
+        /* Navegação Superior */
+        nav {
+            background: var(--nav-bg);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background 0.4s;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            color: var(--accent-green);
-            letter-spacing: 3px;
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
             text-transform: uppercase;
         }
 
-        .tagline {
-            font-size: 1.1rem;
-            opacity: 0.7;
-            margin-top: 10px;
+        /* Botão de Troca de Tema */
+        .theme-toggle {
+            cursor: pointer;
+            background: var(--accent-green);
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--bg-header);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--accent-green);
+            text-transform: uppercase;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
-            padding: 40px 20px;
-            flex-grow: 1;
+            padding: 40px 100px; /* Espaço para as decorações */
         }
 
         .content-box {
             background: var(--glass-card);
             border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-
-        h2 {
-            color: var(--accent-green);
-            font-weight: 400;
-            font-size: 2rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(128, 128, 128, 0.2);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 30px;
+            background: var(--card-bg);
+            padding: 25px;
             border-radius: 12px;
-            border: 1px solid rgba(82, 183, 136, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: default;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            transition: all 0.3s ease;
         }
 
+        /* Brilho Verde/Azul no Hover */
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px var(--accent-green);
             border-color: var(--accent-green);
-            box-shadow: 0 0 25px rgba(82, 183, 136, 0.4); /* Brilho verde envolta */
-            background: rgba(82, 183, 136, 0.05);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1.3rem;
-            border-bottom: 1px solid var(--primary-green);
-            padding-bottom: 10px;
-        }
-
-        .info-section {
-            margin-top: 60px;
-            padding: 20px;
-            border-left: 2px solid var(--primary-green);
         }
 
         footer {
             text-align: center;
             padding: 60px;
-            font-size: 0.9rem;
-            color: #555;
-            background: rgba(0,0,0,0.2);
-            margin-top: 80px;
+            opacity: 0.6;
         }
 
-        b { color: var(--accent-green); }
-
-        .list-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .list-item::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent-green);
+        @media (max-width: 768px) {
+            .side-decoration { display: none; }
+            .container { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
+<div class="side-decoration left-side"></div>
+<div class="side-decoration right-side"></div>
+
+<nav>
+    <a href="#sobre">O Programa</a>
+    <a href="#categorias">Categorias</a>
+    <a href="#importancia">Importância</a>
+    <button class="theme-toggle" onclick="toggleTheme()">Trocar Modo</button>
+</nav>
+
 <header>
     <h1>Agrinho 2026</h1>
-    <div class="tagline">Ecossistema Digital & Sustentabilidade Rural</div>
+    <p>Agro forte, futuro sustentável</p>
 </header>
 
 <div class="container">
     
-    <section class="content-box">
-        <h2>A Importância da Agricultura</h2>
-        <p>
-            A agricultura moderna deixou de ser apenas uma atividade de subsistência para se tornar a maior vitrine tecnológica do planeta. No contexto do <b>Agrinho 2026</b>, discutimos como o campo sustenta a vida urbana. Desde a produção de energia limpa (biocombustíveis) até a garantia de alimentos seguros e nutritivos na mesa de cada família.
-        </p>
-        <p>
-            O equilíbrio é a palavra-chave. A produção em larga escala hoje exige um compromisso ético com a manutenção da biodiversidade, o manejo de bacias hidrográficas e a proteção das florestas nativas.
-        </p>
+    <section id="sobre" class="content-box">
+        <h2>O Programa Agrinho</h2>
+        <p>Desde sua criação, o Agrinho tem sido o elo entre a educação formal e a realidade do campo paranaense. Em 2026, reafirmamos o compromisso de levar ciência e ética para as escolas, formando cidadãos conscientes de que a tecnologia e a natureza devem coexistir em harmonia.</p>
     </section>
 
-    <div class="grid">
+    <section id="importancia" class="content-box">
+        <h2>A Importância da Agricultura</h2>
+        <p>A agricultura é o motor silencioso que sustenta o progresso. Além de garantir a <b>segurança alimentar</b>, ela é hoje o setor que mais investe em biotecnologia e automação. No Paraná, o agronegócio representa a base da nossa economia, provando que é possível crescer preservando os recursos hídricos e a fertilidade do solo para as próximas gerações.</p>
+    </section>
+
+    <div id="categorias" class="grid">
         <div class="card">
-            <h3>Gestão de Recursos</h3>
-            <p>Implementação de sistemas inteligentes que monitoram a umidade do solo, evitando o desperdício de água em 40%.</p>
+            <h3>🤖 Robótica</h3>
+            <p>A automação aplicada ao campo para otimizar colheitas e reduzir o esforço humano pesado.</p>
         </div>
         <div class="card">
-            <h3>Bioeconomia</h3>
-            <p>Transformação de resíduos orgânicos em biogás e fertilizantes, criando uma economia circular e lucrativa.</p>
+            <h3>🌱 Sustentabilidade</h3>
+            <p>Práticas de plantio direto e manejo integrado que protegem o nosso ecossistema.</p>
         </div>
         <div class="card">
-            <h3>Conectividade</h3>
-            <p>O campo 5G permitindo que máquinas operem de forma autônoma, reduzindo a compactação do solo e emissões.</p>
+            <h3>📈 Inovação</h3>
+            <p>O uso de inteligência artificial para prever climas e garantir safras mais saudáveis.</p>
         </div>
     </div>
 
-    <section class="info-section">
-        <h2>O Futuro é agora: Educação 5.0</h2>
-        <p>
-            O programa Agrinho atua na fronteira do conhecimento. Em 2026, o foco não é apenas aprender "sobre" a agricultura, mas sim "com" a tecnologia aplicada a ela. O papel do aluno e do professor é identificar problemas locais e criar soluções globais.
-        </p>
-        <div class="list-item"><b>Inovação Aberta:</b> Projetos que saem da escola e chegam ao produtor vizinho.</div>
-        <div class="list-item"><b>Pensamento Crítico:</b> Analisar o impacto ambiental de cada nova tecnologia adotada.</div>
-        <div class="list-item"><b>Liderança Jovem:</b> Preparar os herdeiros do campo para uma gestão profissional e ecológica.</div>
+    <section class="content-box" style="margin-top: 40px;">
+        <h2>Tecnologia e Vida</h2>
+        <p>A Agricultura 4.0 já é realidade. Drones, sensores de solo e satélites trabalham juntos para criar um mapa digital da nossa terra. O Agrinho 2026 convida você a ser o protagonista dessa transformação, unindo o conhecimento tradicional dos nossos avós com o poder das ferramentas digitais modernas.</p>
     </section>
 
-    <section class="content-box" style="margin-top: 80px;">
-        <h2>Sustentabilidade e Clima</h2>
-        <p>
-            O Paraná é referência mundial em agricultura sustentável devido ao uso extensivo do <b>Plantio Direto</b>. Esta técnica evita a erosão e mantém o carbono no solo, ajudando a mitigar os efeitos das mudanças climáticas. No Agrinho 2026, celebramos as práticas que fazem da nossa agricultura uma "fábrica de oxigênio e água".
-        </p>
-        <p>
-            Entender que uma árvore em pé no meio da propriedade ajuda a regular a chuva para a lavoura é o tipo de consciência que este programa busca consolidar.
-        </p>
-    </section>
-
-    <section style="margin-top: 60px;">
-        <h2>Perguntas Frequentes</h2>
-        <div class="card" style="margin-bottom: 15px; width: auto; border-left: 3px solid var(--accent-green);">
-            <b>Qual o objetivo principal?</b><br>
-            Promover a integração entre cidade e campo através de práticas pedagógicas que envolvam ética, sustentabilidade e inovação.
-        </div>
-        <div class="card" style="width: auto; border-left: 3px solid var(--accent-green);">
-            <b>Quem pode participar?</b><br>
-            Alunos e professores de escolas públicas e particulares, do ensino fundamental ao médio, com foco especial na rede estadual.
-        </div>
+    <section class="content-box">
+        <h2>Compromisso com o Amanhã</h2>
+        <p>Cada semente plantada hoje com técnica e respeito à natureza garante um futuro onde a fome seja combatida e a biodiversidade seja protegida. O Agrinho é mais que um concurso; é um movimento de transformação social.</p>
     </section>
 
 </div>
 
 <footer>
-    <p>SISTEMA FAEP/SENAR-PR - Edição 2026<br>
-    Construindo o amanhã através do saber e da terra.</p>
+    <p>Projeto Educativo Agrinho 2026 | Sistema FAEP/SENAR-PR</p>
 </footer>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        if (body.getAttribute('data-theme') === 'light') {
+            body.removeAttribute('data-theme');
+        } else {
+            body.setAttribute('data-theme', 'light');
+        }
+    }
+</script>
 
 </body>
 </html>
