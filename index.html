@@ -6,40 +6,58 @@
     <title>Agrinho 2026 | Inovação Sustentável</title>
     <style>
         :root {
-            --primary-green: #2d6a4f; /* Verde esmeralda sóbrio */
+            --primary-green: #2d6a4f;
             --accent-green: #52b788;
-            --bg-light: #1a1d1a; /* Fundo grafite levemente mais claro */
+            --bg-light: #1a1d1a; 
             --glass-card: rgba(255, 255, 255, 0.08);
             --text-main: #e0e0e0;
+            --sidebar-color: rgba(82, 183, 136, 0.05);
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fonte padrão limpa */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 200vh; /* Garante que a página seja extensa */
         }
 
-        /* Header Reduzido */
+        /* Elementos Decorativos Laterais */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            background-image: linear-gradient(var(--sidebar-color) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--sidebar-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+        body::before { left: 0; border-right: 1px solid var(--sidebar-color); }
+        body::after { right: 0; border-left: 1px solid var(--sidebar-color); }
+
         header {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             background: linear-gradient(180deg, #132a13 0%, var(--bg-light) 100%);
-            border-bottom: 1px solid rgba(82, 183, 136, 0.3);
+            border-bottom: 1px solid rgba(82, 183, 136, 0.2);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0;
             color: var(--accent-green);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .tagline {
-            font-size: 1rem;
-            opacity: 0.8;
+            font-size: 1.1rem;
+            opacity: 0.7;
             margin-top: 10px;
         }
 
@@ -47,65 +65,88 @@
             max-width: 900px;
             margin: auto;
             padding: 40px 20px;
+            flex-grow: 1;
         }
 
-        /* Seção de Texto Principal */
         .content-box {
             background: var(--glass-card);
             border-radius: 15px;
             padding: 40px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
         }
 
         h2 {
             color: var(--accent-green);
             font-weight: 400;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        /* Grid de Cards */
+        /* Grid de Cards com Efeito de Brilho */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
             border-radius: 12px;
-            border-left: 3px solid var(--primary-green);
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(82, 183, 136, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default;
         }
 
+        /* O EFEITO DE BRILHO SOLICITADO */
         .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+            border-color: var(--accent-green);
+            box-shadow: 0 0 25px rgba(82, 183, 136, 0.4); /* Brilho verde envolta */
+            background: rgba(82, 183, 136, 0.05);
         }
 
         .card h3 {
             margin-top: 0;
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--primary-green);
+            padding-bottom: 10px;
+        }
+
+        /* Seção Adicional para Extensão */
+        .info-section {
+            margin-top: 60px;
+            padding: 20px;
+            border-left: 2px solid var(--primary-green);
         }
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 60px;
             font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #555;
+            background: rgba(0,0,0,0.2);
+            margin-top: 80px;
         }
 
-        b {
+        b { color: var(--accent-green); }
+
+        .list-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .list-item::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
             color: var(--accent-green);
         }
     </style>
@@ -114,47 +155,73 @@
 
 <header>
     <h1>Agrinho 2026</h1>
-    <div class="tagline">Inovação, Tecnologia e a Força do Campo</div>
+    <div class="tagline">Ecossistema Digital & Sustentabilidade Rural</div>
 </header>
 
 <div class="container">
     
     <section class="content-box">
-        <h2>A Importância Vital da Agricultura</h2>
+        <h2>A Importância da Agricultura</h2>
         <p>
-            A agricultura é o alicerce da civilização moderna. Muito além de produzir alimentos, ela movimenta a economia, gera empregos e impulsiona o desenvolvimento tecnológico. Em 2026, o cenário global exige que sejamos mais eficientes do que nunca: precisamos produzir mais fibras, energia e alimentos, utilizando <b>menos recursos naturais</b>.
+            A agricultura moderna deixou de ser apenas uma atividade de subsistência para se tornar a maior vitrine tecnológica do planeta. No contexto do <b>Agrinho 2026</b>, discutimos como o campo sustenta a vida urbana. Desde a produção de energia limpa (biocombustíveis) até a garantia de alimentos seguros e nutritivos na mesa de cada família.
         </p>
         <p>
-            O Paraná é protagonista nessa jornada. Através da <b>Agricultura 4.0</b>, o uso de dados e o manejo inteligente do solo garantem que o estado continue sendo um exemplo de produtividade. O programa Agrinho entra nesta engrenagem para educar as novas gerações sobre como o equilíbrio ambiental e a tecnologia caminham juntos para um futuro próspero.
+            O equilíbrio é a palavra-chave. A produção em larga escala hoje exige um compromisso ético com a manutenção da biodiversidade, o manejo de bacias hidrográficas e a proteção das florestas nativas.
         </p>
     </section>
 
     <div class="grid">
         <div class="card">
-            <h3>Segurança Alimentar</h3>
-            <p>Garantir que comida de qualidade chegue à mesa de todos através de processos logísticos e produtivos otimizados.</p>
+            <h3>Gestão de Recursos</h3>
+            <p>Implementação de sistemas inteligentes que monitoram a umidade do solo, evitando o desperdício de água em 40%.</p>
         </div>
         <div class="card">
-            <h3>Preservação Ativa</h3>
-            <p>O uso de técnicas como o plantio direto e a rotação de culturas para manter a saúde do solo e das águas.</p>
+            <h3>Bioeconomia</h3>
+            <p>Transformação de resíduos orgânicos em biogás e fertilizantes, criando uma economia circular e lucrativa.</p>
         </div>
         <div class="card">
-            <h3>Educação Digital</h3>
-            <p>Levar o pensamento computacional e a robótica para resolver desafios reais vividos pelo produtor rural.</p>
+            <h3>Conectividade</h3>
+            <p>O campo 5G permitindo que máquinas operem de forma autônoma, reduzindo a compactação do solo e emissões.</p>
         </div>
     </div>
 
-    <section class="content-box" style="margin-top: 40px;">
-        <h2>Tecnologia a Serviço da Vida</h2>
+    <section class="info-section">
+        <h2>O Futuro é agora: Educação 5.0</h2>
         <p>
-            Imagine um campo onde drones monitoram a saúde de cada planta e sistemas inteligentes de irrigação economizam milhões de litros de água. Isso já é realidade. O desafio do <b>Agrinho 2026</b> é conectar o estudante a esse universo, mostrando que a agricultura é um dos setores mais inovadores e promissores para as carreiras do futuro.
+            O programa Agrinho atua na fronteira do conhecimento. Em 2026, o foco não é apenas aprender "sobre" a agricultura, mas sim "com" a tecnologia aplicada a ela. O papel do aluno e do professor é identificar problemas locais e criar soluções globais.
         </p>
+        <div class="list-item"><b>Inovação Aberta:</b> Projetos que saem da escola e chegam ao produtor vizinho.</div>
+        <div class="list-item"><b>Pensamento Crítico:</b> Analisar o impacto ambiental de cada nova tecnologia adotada.</div>
+        <div class="list-item"><b>Liderança Jovem:</b> Preparar os herdeiros do campo para uma gestão profissional e ecológica.</div>
+    </section>
+
+    <section class="content-box" style="margin-top: 80px;">
+        <h2>Sustentabilidade e Clima</h2>
+        <p>
+            O Paraná é referência mundial em agricultura sustentável devido ao uso extensivo do <b>Plantio Direto</b>. Esta técnica evita a erosão e mantém o carbono no solo, ajudando a mitigar os efeitos das mudanças climáticas. No Agrinho 2026, celebramos as práticas que fazem da nossa agricultura uma "fábrica de oxigênio e água".
+        </p>
+        <p>
+            Entender que uma árvore em pé no meio da propriedade ajuda a regular a chuva para a lavoura é o tipo de consciência que este programa busca consolidar.
+        </p>
+    </section>
+
+    <section style="margin-top: 60px;">
+        <h2>Perguntas Frequentes</h2>
+        <div class="card" style="margin-bottom: 15px; width: auto; border-left: 3px solid var(--accent-green);">
+            <b>Qual o objetivo principal?</b><br>
+            Promover a integração entre cidade e campo através de práticas pedagógicas que envolvam ética, sustentabilidade e inovação.
+        </div>
+        <div class="card" style="width: auto; border-left: 3px solid var(--accent-green);">
+            <b>Quem pode participar?</b><br>
+            Alunos e professores de escolas públicas e particulares, do ensino fundamental ao médio, com foco especial na rede estadual.
+        </div>
     </section>
 
 </div>
 
 <footer>
-    <p>Programa Agrinho 2026 | Sistema FAEP/SENAR-PR | Desenvolvimento Educacional</p>
+    <p>SISTEMA FAEP/SENAR-PR - Edição 2026<br>
+    Construindo o amanhã através do saber e da terra.</p>
 </footer>
 
 </body>
